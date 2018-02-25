@@ -1,5 +1,0 @@
----
-layout: post
-title: Asciidoc test
----
-왜 안되니?
