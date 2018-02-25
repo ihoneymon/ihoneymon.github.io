@@ -4,6 +4,7 @@ title: honeymon.io 사이트 개편
 tags: [honeymon,honeymon.io]
 categories: Notice
 ---
+
 link:https://jekyllrb-ko.github.io/[`Jekyll`(https://jekyllrb-ko.github.io/)]을 기반으로 하여 블로그를 함께 운영할 계획입니다.
 
 티스토리의 백업서비스 종료와 함께 불안함을 느끼고 있다가 문득 예전에 만들어봤던 깃헙에서 ``{username}.github.io`` 리파지토리를 만들고 지킬(Jekyll)을 이용한 사이트 운영방식을 떠올려서 적용을 해봤습니다.
