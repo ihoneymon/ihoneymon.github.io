@@ -5,7 +5,7 @@ author: honeymon
 baseurl: ""
 url: "http://honeymon.io"
 timezone: "Asia/Seoul"
-#encoding: "utf-8"
+encoding: "UTF-8"
 
 # Social Profiles
 twitter_username: ihoneymon
@@ -13,12 +13,12 @@ github_username: ihoneymon
 facebook_username: "kim.jiheon"
 
 # Build settings
-#markdown: kramdown
-#asciidoc:
+markdown: kramdown
+# asciidoc:
 #  ext: adoc, asc
 paginate: 5
 paginate_path: "/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-asciidoc
+#  - jekyll-asciidoc
