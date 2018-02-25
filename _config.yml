@@ -1,0 +1,25 @@
+title: "I'm honeymon(JiHeon Kim)."
+email: "ihoneymon@gmail.com"
+description: "허니몬(honeymon.io)의 블로그 입니다."
+author: honeymon
+baseurl: ""
+url: "http://honeymon.io"
+timezone: "Asia/Seoul"
+encoding: "utf-8"
+
+# Social Profiles
+twitter_username: ihoneymon
+github_username: ihoneymon
+facebook_username: "kim.jiheon"
+
+# Build settings
+markdown: kramdown
+asciidoc:
+  processor: asciidoctor
+  ext: adoc, asc
+paginate: 5
+paginate_path: "/posts/page:num/"
+plugins:
+  - "jekyll-feed"
+  - "jekyll-paginate"
+  - "jekyll-asciidoc"
