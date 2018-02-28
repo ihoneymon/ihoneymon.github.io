@@ -79,8 +79,11 @@ public interface SpringApplicationAdminMXBean {
 ![Spring Boot Actuator Mbeans]({{"/assets/post/2018-02-28-springbootapplication-admin-jmx-jconsole-04.png" | absolute_url }})
 
 ## 참고
+* ![JMX Archirecture](https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Jmxarchitecture.png/400px-Jmxarchitecture.png)
 * [SpringBootApplication Admin 기능(https://goo.gl/LgqMc3)](https://docs.spring.io/spring-boot/docs/2.0.0.RC2/reference/htmlsingle/#boot-features-application-admin)
 * [Introducing MBean(https://goo.gl/pQeTcf)](https://docs.oracle.com/javase/tutorial/jmx/mbeans/index.html)
 * [Standard MBeans(https://goo.gl/NqN6Pa)](https://docs.oracle.com/javase/tutorial/jmx/mbeans/standard.html)
 * [MBeanServer](http://cris.joongbu.ac.kr/course/2018-1/jcp/api/javax/management/MBeanServer.html)
 > 에이전트측에서 MBean 를 조작하기 위한 인터페이스입니다
+* [JMX Architecture](https://docs.oracle.com/javase/7/docs/technotes/guides/jmx/overview/architecture.html)
+* [Java EE Standard and Specification](https://goo.gl/QfxNhh)
