@@ -7,7 +7,7 @@ date: 2018-03-01 23:00
 ---
 
 ## 스프링 부트 2.0 정식 출시
-[](https://spring.io/blog/2018/03/01/spring-boot-2-0-goes-ga)
+* [https://spring.io/blog/2018/03/01/spring-boot-2-0-goes-ga](https://spring.io/blog/2018/03/01/spring-boot-2-0-goes-ga)
 
 ## 스프링 부트 2.0 새로운 점:
 - A Java 8 baseline, and Java 9 support.
@@ -36,7 +36,7 @@ date: 2018-03-01 23:00
 
 그리고 운영과 관련된 액츄에이터(Actuator)에서 DropWizard에 맞춰 지원하던 형식이 [Micrometer](https://micrometer.io/)에서 쉽게 사용할 수 있도록 개편되었다. 더불어서 액츄에이터 기본경로에 ``/actuator``가 접두사로 붙게 되었다.
 
-그레이들 관련한 플러그인도 조금 더 개선이 될 것으로 보인다. 
+그레이들 관련한 플러그인도 조금 더 개선이 될 것으로 보인다.
 
 ## 참고
 * [Spring Boot 2.0 Release note](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Release-Notes)
