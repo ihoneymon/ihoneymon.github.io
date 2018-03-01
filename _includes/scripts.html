@@ -1,6 +1,7 @@
 <script src="{{"/assets/vendor/jquery/jquery.min.js" | relative_url }}"></script>
 <script src="{{"/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" | relative_url }}"></script>
 <script src="{{"/assets/vendor/startbootstrap-clean-blog/js/clean-blog.min.js" | relative_url }}"></script>
+<script src="{{"/assets/scripts.js" | relative_url }}"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-67996697-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,7 +11,13 @@
     gtag('config', 'UA-67996697-1');
 </script>
 
-<script src="{{"/assets/scripts.js" | relative_url }}"></script>
+<!-- 깃헙 댓글 -->
+<script src="https://utteranc.es/client.js"
+        repo="https://github.com/ihoneymon/ihoneymon.github.io"
+        branch="master"
+        issue-term="pathname"
+        async>
+</script>
 
 {% if page.url contains 'contact' %}
   <!-- Form Validation -->
