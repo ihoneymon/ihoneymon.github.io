@@ -41,3 +41,4 @@ date: 2018-03-01 23:00
 ## 참고
 * [Spring Boot 2.0 Release note](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Release-Notes)
 * [Spring Boot 1.5 -> 2.0 Migration Guide](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide)
+* [백기선님의 스프링 부트 - Youtube](https://goo.gl/Qm6X5V)
