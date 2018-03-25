@@ -36,7 +36,7 @@ List<String> array = new ArrayList<>("apple", "banana", "tomato");
 array.join("\n AND ");
 ```
 
-대신 ``StringBuilder``와 유사한 형태로 지정된 문자열이 추가될때마다 구분자를 넣어주는 기능이 있다. 바로 link:https://docs.oracle.com/javase/10/docs/api/java/util/StringJoiner.html[`StringJoiner`]가 그렇다.
+대신 ``StringBuilder``와 유사한 형태로 지정된 문자열이 추가될때마다 구분자를 넣어주는 기능이 있다. 바로 [`StringJoiner`](https://docs.oracle.com/javase/10/docs/api/java/util/StringJoiner.html)가 그렇다.
 
 ```java
 @Test
@@ -86,7 +86,7 @@ public void testDelimiterPrefixSuffix() {
 }
 ```
 
-이런 이야기가 나온 것은 페북에서 케빈님이 동적쿼리를 만드는데 link:https://www.facebook.com/k3vin.lee/posts/611087802567014[`WHERE 1 = 1`]를 사용하는 것에 대해 이해하지 못하겠다는 이야기를 하면서 그에 대한 제안을 살피다가 그렇게 다시한번 상기하게 되었다.
+이런 이야기가 나온 것은 페북에서 케빈님이 동적쿼리를 만드는데 [`WHERE 1 = 1`](https://www.facebook.com/k3vin.lee/posts/611087802567014)를 사용하는 것에 대해 이해하지 못하겠다는 이야기를 하면서 그에 대한 제안을 살피다가 그렇게 다시한번 상기하게 되었다.
 
 ```java
 @Test
@@ -117,7 +117,7 @@ public void testTwoElements() {
 ```
 
 ## 다른 방법
-link:https://docs.oracle.com/javase/10/docs/api/java/util/StringJoiner.html[`StringJoiner`]를 살펴보니 스트림(stream)과 ``Collector.joining({delimiter}) 이용하는 예제코드가 있다.
+[`StringJoiner`](https://docs.oracle.com/javase/10/docs/api/java/util/StringJoiner.html)를 살펴보니 스트림(stream)과 ``Collector.joining({delimiter}) 이용하는 예제코드가 있다.
 
 ```java
 List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
