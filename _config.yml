@@ -19,6 +19,9 @@ asciidoc:
   ext: asciidoc, adoc, asc
   page_attribute_prefix: jekyll
   require_front_matter_header: true
+  attributes:
+    - source-highlighter=pygments
+    - pygments-css=style
 paginate: 5
 paginate_path: "/posts/page:num/"
 plugins:
