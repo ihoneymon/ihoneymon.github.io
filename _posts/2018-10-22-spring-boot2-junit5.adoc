@@ -1,7 +1,6 @@
 = [spring-boot] Junit5 적용기
-honeymon, <ihoneymon@gmail.com>
-v0.0.1, 2018-10-18
 :page-layout: post
+:page-summary: 새로운 프로젝트를 시작하면서 새로운 것들을 익혀서 반영해보자. JUnit5!
 
 == JUnit5 의존성 추가
 * 예제 프로젝트: link:https://github.com/ihoneymon/spring-boot2-junit5-spock[spring-boot2-junit5-spock]
