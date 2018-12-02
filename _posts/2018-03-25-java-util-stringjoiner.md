@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "[java.util] StringJoiner 사용법 확인"
-tags: [java,util,stringjoiner]
 categories: [tech]
+tags: [java,util,stringjoiner]
 date: 2018-03-25 12:00
 ---
 

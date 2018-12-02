@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Intellij에서 코틀린 프로젝트 빌드시 JVM target 잘못됐다 할 때
-tags: [kotlin,intellij,jvm]
 categories: [tech]
+tags: [kotlin,intellij,jvm]
 date: 2018-03-08 17:30
 ---
 

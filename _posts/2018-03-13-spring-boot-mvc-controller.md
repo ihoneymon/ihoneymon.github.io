@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "[springboot] Spring MVC 자동구성 제어하기"
-tags: [springboot,spring,mvc,autoconfiguration]
 categories: [tech]
+tags: [springboot,spring,mvc,autoconfiguration]
 date: 2018-03-13 11:30
 ---
 

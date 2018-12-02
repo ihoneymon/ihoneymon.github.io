@@ -1,7 +1,7 @@
 ---
 layout: post
-title: [spring-boot] 2.1.0.RELEASE 에 대하여
-categories: [blog, travel]
+title: "[spring-boot] 2.1.0.RELEASE 에 대하여"
+categories: [tech]
 tags: [springboot, release]
 ---
 

@@ -1,5 +1,9 @@
-JUnit5 의존성 추가
-==================
+---
+layout: post
+title: "[java] jUnit5 적용기"
+categories: [tech]
+tags: [java,junit5]
+---
 
 -   예제 프로젝트:
     [spring-boot2-junit5-spock](https://github.com/ihoneymon/spring-boot2-junit5-spock)
@@ -10,62 +14,65 @@ JUnit5가 세상에 모습을 드러내놓은지는 제법 됐다. 새로운 프
 스프링 부트 2에서 JUnit5 에 대한 의존성을 추가하고 테스트를 작성하는
 방법을 설명한다.
 
-    buildscript {
-        ext {
-            springBootVersion = '2.0.6.RELEASE'
-        }
-        repositories {
-            mavenCentral()
-        }
-        dependencies {
-            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        }
+```
+buildscript {
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
     }
-
-    apply plugin: 'java'
-    apply plugin: 'eclipse'
-    apply plugin: 'org.springframework.boot'
-    apply plugin: 'io.spring.dependency-management'
-
-    group = 'io.honeymon.study'
-    version = '0.0.1-SNAPSHOT'
-    sourceCompatibility = 10
-
     repositories {
         mavenCentral()
     }
-
     dependencies {
-        implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-        implementation('org.springframework.boot:spring-boot-starter-web')
-
-        runtimeOnly('com.h2database:h2')
-        compileOnly('org.projectlombok:lombok')
-
-        testImplementation('org.springframework.boot:spring-boot-starter-test') {
-            exclude module: 'junit'
-        }
-        testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
-        testCompile('org.junit.jupiter:junit-jupiter-params:5.2.0')
-        testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
+}
 
-    test {
-        useJUnitPlatform()
-    }
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-junit4 제외
------------
+group = 'io.honeymon.study'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 10
 
-스프링 부트 스타터
-\`\`org.springframework.boot:spring-boot-starter-test\`\`는 junit4에
-대한 의존성을 가지고 있다. 그래서 junit5를 사용하기 위해서는
-\`\`spring-boot-starter-test\`\`에 추가되어 있는 \`\`junit4\`\`를
-제외해야 한다.
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    runtimeOnly('com.h2database:h2')
+    compileOnly('org.projectlombok:lombok')
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude module: 'junit'
     }
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.2.0')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+}
+
+test {
+    useJUnitPlatform()
+}
+```
+
+## junit4 제외
+
+스프링 부트 스타터
+`org.springframework.boot:spring-boot-starter-test`는 junit4에
+대한 의존성을 가지고 있다. 그래서 junit5를 사용하기 위해서는
+`spring-boot-starter-test`에 추가되어 있는 `junit4`를
+제외해야 한다.
+
+```
+testImplementation('org.springframework.boot:spring-boot-starter-test') {
+    exclude module: 'junit'
+}
+```
 
 > **Note**
 >
@@ -87,13 +94,15 @@ junit4 제외
 >
 이어서 junit5에 대한 의존성을 추가한다.
 
-    dependencies {
-        // 생략
-        testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
-        testCompile('org.junit.jupiter:junit-jupiter-params:5.2.0')
-        testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
-        // 생략
-    }
+```
+dependencies {
+    // 생략
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.2.0')
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.2.0')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.2.0')
+    // 생략
+}
+```
 
 이어서 \`\`test\`\` 태스크에서 \`\`useJUnitPlatform()\`\`를 선언한다.
 \`\`useJUnitPlatform\`\`는 테스트 실행시 JUnit 플랫폼(JUnit 5)이라는
@@ -112,8 +121,8 @@ junit4 제외
 이렇게 해서 \`\`build.gradle\`\`에서 JUnit5를 사용하기 위한 위존성
 정리를 마쳤다.
 
-테스트 작성
-===========
+## 테스트 작성
+```
 
     package io.honeymon.study.junit5;
 
@@ -131,6 +140,7 @@ junit4 제외
         }
 
     }
+```
 
 -   [\`\`ExtendWith\`\`](https://junit.org/junit5/docs/5.0.3/api/org/junit/jupiter/api/extension/ExtendWith.html)는
     JUnit5 에서 반복적으로 실행되는 클래스나 메서드에 선언한다.

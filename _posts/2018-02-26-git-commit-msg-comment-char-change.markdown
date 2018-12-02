@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 깃 커밋 메시지 주석문자 변경하기
-tags: [git, commit, message, msg, commentChar, sharp, semicolon]
 categories: Git
+tags: [git, commit, message, msg, commentChar, sharp, semicolon]
 date: 2018-02-26 09:30:00
 ---
 

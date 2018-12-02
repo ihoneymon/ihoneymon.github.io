@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 코틀린 class 를 열어다오.  
-tags: [kotlin,class,final,open]
 categories: [tech]
+tags: [kotlin,class,final,open]
 date: 2018-03-08 17:30
 ---
 

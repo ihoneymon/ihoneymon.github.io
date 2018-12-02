@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 내 포스트에 깃헙 이슈로 관리하는 댓글달기
-tags: [blog,comment,utterances,outsider]
 categories: [notice]
+tags: [blog,comment,utterances,outsider]
 date: 2018-03-01 23:00
 ---
 

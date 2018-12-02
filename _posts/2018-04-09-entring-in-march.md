@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "[로그] 어느 봄날의 구직활동 "
-tags: [honeymon,career]
 categories: [diary]
+tags: [honeymon,career]
 date: 2018-04-09 12:00
 ---
 

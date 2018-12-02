@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 아스키독(Asciidoc) 기반으로 책쓰기 템플릿
+categories: tech
 tags: [asiidoc, asciidoctor, book]
-categories: Tech
 date: 2018-02-26 22:30:00
 ---
 [](https://github.com/ihoneymon/asciidoc-book-template)
