@@ -3,6 +3,7 @@ layout: post
 title: "[spring-boot] 2.1.0.RELEASE 에 대하여"
 categories: [tech]
 tags: [springboot, release]
+date: 2018-11-24 00:00
 ---
 
 스프링 부트 2.1.0.RELEASE 에서는 스프링 부트 5.1.0.RELEASE 가 포함되어있다. 5.1.0 버전은 이전

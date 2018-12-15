@@ -1,8 +1,8 @@
 ---
 layout: post
 title: SpringBootApplication Admin(JMX client) 기능에 대해서
-tags: [java,spring,springboot,application,admin,jmx]
 categories: [tech,spring-boot]
+tags: [java,spring,springboot,application,admin,jmx]
 date: 2018-02-28 13:30:00
 ---
 
