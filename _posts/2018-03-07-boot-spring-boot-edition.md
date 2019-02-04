@@ -14,6 +14,6 @@ date: 2018-03-07 09:00
 
 최대한 읽기편하고 깔끔하게 나오도록 해보겠습니다.
 
-![Boot Spring Boot 교정시작 01]({{"/assets/post/2018-03-07-boot-spring-boot-edition-01.jpg" | absolute_url }})
-![Boot Spring Boot 교정시작 02]({{"/assets/post/2018-03-07-boot-spring-boot-edition-02.jpg" | absolute_url }})
-![Boot Spring Boot 교정시작 03]({{"/assets/post/2018-03-07-boot-spring-boot-edition-03.jpg" | absolute_url }})
+![Boot Spring Boot 교정시작 01]({{"/assets/post/2018-03-07/2018-03-07-boot-spring-boot-edition-01.jpg" | absolute_url }})
+![Boot Spring Boot 교정시작 02]({{"/assets/post/2018-03-07/2018-03-07-boot-spring-boot-edition-02.jpg" | absolute_url }})
+![Boot Spring Boot 교정시작 03]({{"/assets/post/2018-03-07/2018-03-07-boot-spring-boot-edition-03.jpg" | absolute_url }})

@@ -12,15 +12,15 @@ Jekyll로 사이트를 정돈하고 포스트를 조금씩 적어올리기 시�
 
 [아웃사이더](https://blog.outsider.ne.kr)님의 [페이스북 댓글을 utterances로 교체했습니다](https://blog.outsider.ne.kr/1356)를 보고 댓글 기능을 추가했습니다.
 
-![포스트에 달린 댓글]({{"/assets/post/2018-03-05-add-utterances-comments-function-01.png" | absolute_url }})
+![포스트에 달린 댓글]({{"/assets/post/2018-03-05/2018-03-05-add-utterances-comments-function-01.png" | absolute_url }})
 
 댓글을 달면 포스트에 대한 댓글이 달렸다는 것을 이슈로 알수 있습니다. 이슈에 댓글을 달면 대댓글도 됩니다.
 
-![댓글 달기]({{"/assets/post/2018-03-05-add-utterances-comments-function-02.png" | absolute_url }})
+![댓글 달기]({{"/assets/post/2018-03-05/2018-03-05-add-utterances-comments-function-02.png" | absolute_url }})
 
 그리고 댓글이 달렸다는 알림메일도 옵니다.
 
-![이메일알림]({{"/assets/post/2018-03-05-add-utterances-comments-function-03.png" | absolute_url }})
+![이메일알림]({{"/assets/post/2018-03-05/2018-03-05-add-utterances-comments-function-03.png" | absolute_url }})
 
 ## 정리
 * 댓글을 달기 위해서는 깃헙에 로그인하고 권한을 확인하고 이용승인을 해야합니다.

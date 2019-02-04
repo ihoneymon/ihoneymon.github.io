@@ -23,4 +23,4 @@ Kotlin: Cannot inline bytecode built with JVM target 1.8 into bytecode that is b
 
 ## 정리
 * 코틀린 컴파일러에서 사용하는 JVM 버전을 1.6 에서 1.8로 변경하면 된다.
-![Intellij > Settings > Kotlin Compiler]({{"/assets/post/2018-03-11-intellij-kotlin-jvm.png" | absolute_url }})
+![Intellij > Settings > Kotlin Compiler]({{"/assets/post/2018-03-11/2018-03-11-intellij-kotlin-jvm.png" | absolute_url }})

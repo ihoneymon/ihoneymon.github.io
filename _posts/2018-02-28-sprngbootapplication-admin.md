@@ -58,11 +58,11 @@ public interface SpringApplicationAdminMXBean {
 
 > jmx 에 노출되는 이름은 ``spring.application.admin.jmx-name`` 속성을 통해 재정의할 수 있다.
 
-![JConsole 에서 BootSpringBootApplication 발견!]({{"/assets/post/2018-02-28-springbootapplication-admin-jmx-jconsole-01.png" | absolute_url }})
+![JConsole 에서 BootSpringBootApplication 발견!]({{"/assets/post/2018-02-28/2018-02-28-springbootapplication-admin-jmx-jconsole-01.png" | absolute_url }})
 
-![JConsole 에서 BootSpringBootApplication 연결]({{"/assets/post/2018-02-28-springbootapplication-admin-jmx-jconsole-02.png" | absolute_url }})
+![JConsole 에서 BootSpringBootApplication 연결]({{"/assets/post/2018-02-28/2018-02-28-springbootapplication-admin-jmx-jconsole-02.png" | absolute_url }})
 
-![BootSpringBootApplication에서 노출된 MBean 항목들]({{"/assets/post/2018-02-28-springbootapplication-admin-jmx-jconsole-03.png" | absolute_url }})
+![BootSpringBootApplication에서 노출된 MBean 항목들]({{"/assets/post/2018-02-28/2018-02-28-springbootapplication-admin-jmx-jconsole-03.png" | absolute_url }})
 
 이렇게 ``SpringApplicationAdminMXBean``가 노출되면 원격에서 스프링 부트 애플리케이션을 관리할 수 있게 된다. 예전에는 스프링 부트 액츄에이터(Actuator)에서 [Remote Shell](https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#production-ready-remote-shell)기능을 지원했지만, 스프링 부트 2.0 에서는 **제외(Deprecated)**되었다.
 
@@ -76,7 +76,7 @@ public interface SpringApplicationAdminMXBean {
 ### 스프링 부트 액츄에이터(Spring Boot Actuator) MXBeans
 추가적으로, 스프링 부트 [액츄에이터(Actuator)](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready)도 MBean 으로 노출된다. 이에 대해서는 추후에 살펴보겠다.
 
-![Spring Boot Actuator Mbeans]({{"/assets/post/2018-02-28-springbootapplication-admin-jmx-jconsole-04.png" | absolute_url }})
+![Spring Boot Actuator Mbeans]({{"/assets/post/2018-02-28/2018-02-28-springbootapplication-admin-jmx-jconsole-04.png" | absolute_url }})
 
 ## 참고
 * ![JMX Archirecture](https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Jmxarchitecture.png/400px-Jmxarchitecture.png)

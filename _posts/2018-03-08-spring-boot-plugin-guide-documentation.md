@@ -10,11 +10,11 @@ date: 2018-03-08 17:30
 
 * Spring Boot Gradle plugin Guide:
 [https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/](https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/)
-> ![Spring Boot Gradle plugin Guide]({{"/assets/post/2018-03-08-spring-boot-plugin-guide-01.png" | absolute_url }})
+> ![Spring Boot Gradle plugin Guide]({{"/assets/post/2018-03-08/2018-03-08-spring-boot-plugin-guide-01.png" | absolute_url }})
 
 * Spring Boot Maven plugin Guide:
 [https://docs.spring.io/spring-boot/docs/current/maven-plugin/index.html](https://docs.spring.io/spring-boot/docs/current/maven-plugin/index.html)
-> ![Spring Boot Maven plugin Guide]({{"/assets/post/2018-03-08-spring-boot-plugin-guide-02.png" | absolute_url }})
+> ![Spring Boot Maven plugin Guide]({{"/assets/post/2018-03-08/2018-03-08-spring-boot-plugin-guide-02.png" | absolute_url }})
 
 스프링 부트 빌드와 관련하여 필요한 기능에 대해서 사용하는 빌드도구에 따라서 각 문서를 참조하기 비란다.
 
