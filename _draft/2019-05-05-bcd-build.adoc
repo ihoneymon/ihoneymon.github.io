@@ -1,0 +1,126 @@
+= [B-C-D] 002, 빌드(Build)
+honeymon, ihoneymon@gmail.com
+v0.0.1, 2019-05-03
+
+:메: 메이븐
+:그: 그레이들
+
+[quote#honeymon, #월급쟁이개발자 허니몬]
+____
+Developer life is **Coding** between **Build** and **Deploy**.
+
+개발자 인생은 (프로젝트) 빌드와 배포 사이 삽질(=코딩)(의 연속)이다.
+____
+
+== 빌드(Build)에 대한 이야기
+[quote, #월급쟁이개발자 허니몬]
+____
+빌드(Build)란, 애플리케이션 소스 코드를 실행가능한 형태로 가공하는 과정이다.
+____
+
+개발자가 작성한 애플리케이션 코드를 어딘가에 배포(Deploy)하려면, 애플리케이션이 실행되는데 필요한 라이브러리와 속성파일 등을 하나의 아카이브(Archive)파일로 묶는 과정(패키징, Packaging)을 수행해야 한다. 
+
+지금은 잘 기억나지 않지만(...), 앤트를 사용할 때는 프로젝트 특정 위치(ex: `/libs`)에 각종 jar 파일을 모아두고 압축하는 과정을 수행했었다. 이 때는 라이브러리 파일을 특정 사이트에서 다운로드 받고 버전이 변경되었을 때는 이 같은 행위를 반복해야하는 번거로움이 있었다.
+
+그러다가 메이븐(Maven)을 사용하게 되면서 신세계를 경험했다(크흐...). 필요한 라이브러리 파일을 하나하나 다운로드 받지 않아도 됐다. 메이븐의 빌드스크립트 파일 ``pom.xml``에 필요한 라이브러리에 대해 기술하면 link:[메이븐 저장소](or link:[넥서스])에서 해당 라이브러리를 다운로드 받아 프로젝트 특정위치에 다운로드 한다.
+
+.``pom.xml`` 예제(link:https://github.com/ihoneymon/spring-boot2-maven/blob/master/pom.xml[])
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.honeymon.boot</groupId>
+    <artifactId>spring-boot-maven</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>spring-boot-maven</name>
+    <description>Demo project for Spring Boot</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>11</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId> // <1>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+----
+<1> '스프링 부트 빌드 플러그인'에 대해서는 나중에 다룰 예정이다.
+
+``pom.xml``의 ``<dependencies>..</dependencies>``영역에서 정해진 규칙에 따라서 ``<dependency>..</dependency>``를 선언하면 메이븐 중앙저장소 혹은 지정된 넥서스 저장소에서 프로젝트 지정위치에 라이브러리를 다운로드한다. 이 과정에서 해당 라이브러리가 의존성을 가지는 다른 라이브러리도 함께 다운로드가 된다. 앤트를 사용했을 때는 이런 참조 의존성까지 함께 관리해야 했었다. 크흡.
+
+//TODO Intellij, Eclipse 에서 다운로드 받는 위치 확인
+
+
+음... 뭘 쓰려고 했는지 까먹었다...
+
+== 빌드 기본작동 방식
+* 그레이들/메이븐 공통
+* 관례적인 구조를 따르는 경우
+// 메이븐 기본구조
+=== src/main
+* 애플리케이션 코드
+* 배포를 위한 패키징 대상
+
+=== src/test
+* 애플리케이션 코드 테스트 프로젝트
+* 배포대상 아님
+
+== 빌드도구 선택
+* 본인에게 맞는 방식을 

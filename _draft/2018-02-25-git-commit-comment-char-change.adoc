@@ -4,6 +4,7 @@ title: 깃 커밋 메시지 주석문자 변경하기
 tags: [git, commit, message, msg, commentChar, sharp, semicolon]
 categories: Git
 ---
+
 [NOTE]
 ====
 Change git commit commentChar (``#``) change to (``;``)
