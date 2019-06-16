@@ -6,6 +6,9 @@ tags: [tech, java, spring-boot]
 date: 2019-06-16 22:00:00
 ---
 
+> 스프링 부트 참고서는 ['부트 스프링 부트!'](http://www.yes24.com/Product/Goods/62112463)
+> ![Boot Spring Boot! 한 권으로 정리하는 스프링 부트 A to Z ](http://image.yes24.com/Goods/62112463/800x0)
+
 오는 8월 1일, 스프링 부트 1.5.X 지원이 중단된다([Spring Boot 1.x EOL Aug
 1st
 2019](https://spring.io/blog/2018/07/30/spring-boot-1-x-eol-aug-1st-2019)).
@@ -708,3 +711,5 @@ h2database 를 인메모리(in-memory) 형태로 테스트할 때
 
 -   [Querydsl plugin -
     Gradle](https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl)
+
+- ['Boot Spring Boot! 한 권으로 정리하는 스프링 부트 A to Z ' - Wiki](https://github.com/ihoneymon/boot-spring-boot/wiki/스프링-부트-2.x-여행을-준비하는-개발자를-위한-안내서)
