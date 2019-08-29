@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[rubygmes] cannot load such file -- /usr/share/rubygems-integration/all/specifications/exe/rake"
-categories: [tech]
+category: [tech]
 tags: [ruby, rubygems]
 date: 2018-12-15 11:00
 ---

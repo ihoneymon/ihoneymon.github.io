@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[ide] STS 패키지 탐색기(Package Explorer) 폰트 크기 변경"
-categories: [tech]
+category: [tech]
 tags: [ide,eclipse,sts]
 date: 2019-01-12 00:00
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 스프링 부트 빌드도구 플러그인 가이드(그레이들Gradle 과 메이븐Maven)
-categories: [tech]
+category: [tech]
 tags: [springboot,buildtool,gradle,maven]
 date: 2018-03-08 17:30
 ---

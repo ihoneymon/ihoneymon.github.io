@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Boot Spring Boot: 스프링 부트 시작하기'
-categories: [notice]
+category: [notice]
 tags: [honeymon,ihoneymon,책]
 date: 2018-03-07 09:00
 ---

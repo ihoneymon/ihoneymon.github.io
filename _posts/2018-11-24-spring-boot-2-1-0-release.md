@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[spring-boot] 2.1.0.RELEASE 에 대하여"
-categories: [tech]
+category: [tech]
 tags: [springboot, release]
 date: 2018-11-24 00:00
 ---

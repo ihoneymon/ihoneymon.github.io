@@ -1,7 +1,7 @@
 ---
 title: "[java] 자바 메모리누수(with 힙덤프) 분석하기"
 layout: post
-categories: tech
+category: tech
 tags: [tech, java, mat]
 date: 2019-05-29 19:00:00
 ---

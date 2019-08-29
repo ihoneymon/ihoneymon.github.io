@@ -1,7 +1,7 @@
 ---
 title: "[spring-boot] 스프링 부트 2.x 준비하는 개발자를 위한 안내서"
 layout: post
-categories: tech
+category: tech
 tags: [tech, java, spring-boot]
 date: 2019-06-16 22:00:00
 ---

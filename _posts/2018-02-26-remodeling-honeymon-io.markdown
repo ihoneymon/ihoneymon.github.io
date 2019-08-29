@@ -1,7 +1,7 @@
 ---
 layout: post
 title: honeymon.io 사이트 개편
-categories: Notice
+category: Notice
 tags: [honeymon,honeymon.io]
 date: 2018-02-26 09:00:00
 ---

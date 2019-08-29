@@ -2,7 +2,7 @@
 layout: post
 title: honeymon.io 사이트 개편
 tags: [honeymon,honeymon.io]
-categories: Notice
+category: Notice
 ---
 
 link:https://jekyllrb-ko.github.io/[`Jekyll`(https://jekyllrb-ko.github.io/)]을 기반으로 하여 블로그를 함께 운영할 계획입니다.

@@ -1,7 +1,7 @@
 ---
 title: "스프링 캠프 2019: 실전에 써먹는 스프링 부트"
 layout: post
-categories: tech
+category: tech
 tags: [asiidoc, asciidoctor, book]
 date: 2019-05-02 09:00:00
 ---
