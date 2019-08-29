@@ -2,15 +2,194 @@
 :page-layout: post
 :page-title: "Git: 2.23 Release"
 :page-tags: [git, checkout, switch, restore]
-:page-categories: git
+:page-category: git
 
-테스트!!!
+[INFO]
+====
+깃(Git) 2.23 버전이 지난 08월 16일 출시되었다. 
 
-[source,java]
+image::https://github.blog/wp-content/uploads/2019/08/62679250-c8510100-b968-11e9-9e6b-7e5fd1c16dfa.png?w=1200[git 2.23.0 release]
+====
+
+가장 눈에 띄는 특징은 ``checkout`` 의 기능이 각각 ``switch`` 와 ``restore`` 로 분리된 것이다.
+
+기존의 ``checkout`` 은 브랜치를 생성()하거나 이동하거나 복원(Restore)하는 용도로 사용되었다.
+
+
+== 2.23.0 이전
+* 브랜치 변경 및 생성 
++
+[source,shell]
 ----
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, world!");
-    }
-}
+usage: git checkout [<options>] <branch>
+   or: git checkout [<options>] [<branch>] -- <file>...
+
+    -q, --quiet           suppress progress reporting
+    -b <branch>           create and checkout a new branch
+    -B <branch>           create/reset and checkout a branch
+    -l                    create reflog for new branch
+    --detach              detach HEAD at named commit
+    -t, --track           set upstream info for new branch
+    --orphan <new-branch>
+                          new unparented branch
+    -2, --ours            checkout our version for unmerged files
+    -3, --theirs          checkout their version for unmerged files
+    -f, --force           force checkout (throw away local modifications)
+    -m, --merge           perform a 3-way merge with the new branch
+    --overwrite-ignore    update ignored files (default)
+    --conflict <style>    conflict style (merge or diff3)
+    -p, --patch           select hunks interactively
+    --ignore-skip-worktree-bits
+                          do not limit pathspecs to sparse entries only
+    --ignore-other-worktrees
+                          do not check if another worktree is holding the given ref
+    --recurse-submodules[=<checkout>]
+                          control recursive updating of submodules
+    --progress            force progress reporting
+
 ----
+
+* 복원(`git checkout -- <file>`)
++
+[source,shell]
+----
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	deleted:    _posts/2019-08-29-git-2.23-release.adoc
+
+no changes added to commit (use "git add" and/or "git commit -a")
+----
+
+그런데 이것이 각각 분리된 것이다.
+
+== 2.23.0 이후
+우선 업데이트 하는 방법은,
+
+* 맥OS: brew
++
+[source,shell]
+----
+$ brew update git
+----
+
+* Linux(Ubuntu)
++
+[source,shell]
+----
+$ git --version
+git version 2.17.1 // 현재 버전은 2.17.1
+
+
+$ sudo add-apt-repository ppa:git-core/ppa // Git PPA 추가
+[sudo] password for honeymon:         
+ The most current stable version of Git for Ubuntu.
+
+For release candidates, go to https://launchpad.net/~git-core/+archive/candidate .
+ More info: https://launchpad.net/~git-core/+archive/ubuntu/ppa
+Press [ENTER] to continue or Ctrl-c to cancel adding it.
+
+$ sudo apt update && sudo apt upgrade
+// 생략
+$ sudo apt upgrade
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Calculating upgrade... Done
+The following NEW packages will be installed:
+  libpcre2-8-0
+The following packages will be upgraded:
+  git git-man gitk
+3 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 8,982 kB of archives.
+After this operation, 9,327 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+
+// 생략
+
+$ git --version
+git version 2.23.0 // 2.23.0 설치
+----
+
+[NOTE]
+====
+깃에 대한 PPA 저장소를 추가해야 최신버전을 설치할 수 있다.
+====
+
+== `switch` 와 `restore` 동작 확인
+
+[qoute, Taylor Blau, Highlights from Git 2.23]
+____
+Git 2.23 brings a new pair of experimental commands to the suite of existing ones: git switch and git restore. These two are meant to eventually provide a better interface for the well-known git checkout. The new commands intend to each have a clear separation, neatly divvying up what the many responsibilities of git checkout, as we’ll show below.
+
+If you’ve tried to list out what’s possible with git checkout, you might have visited the documentation to figure it out. You might have seen the phrase, **“switch branches or restore working tree files”** and scratched your head. Huh?
+____
+
+[NOTE]
+====
+브랜치를 변경(Switch) 하고 작업 파일을 복원(Restore) 한다.
+
+이렇게 기억하면 된다.
+====
+
+=== `switch`: 브랜치를 변경한다.
+브랜치를 (없는 경우 생성하면서) 변경할 수 있다.
+
+* 브랜치 변경
++
+[source,shell]
+----
+git:(master) $ git switch develop
+Switched to branch 'develop'
+git:(develop) $
+----
+
+* 브랜치 생성 및 변경
++
+[source,shell]
+----
+git:(develop) git switch -c feature/git-switch
+Switched to a new branch 'feature/git-switch'
+
+git:(feature/git-switch) 
+----
+
+이 외에도 다양한 선택사항이 존재한다. ``git switch --help``로 확인가능하다.
+
+=== `restore`: 작업중인 파일을 복원한다.
++
+[source,shell]
+----
+git:(develop) $ git status
+On branch develop
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   build.gradle // 변경한 파일이 있다. 위에서 git restore 로 변경사항을 되돌릴 수 있다고 알리고 있다.
+
+no changes added to commit (use "git add" and/or "git commit -a")
+git:(develop) $ git restore build.gradle  // 복구
+git:(develop) $ git status 
+On branch develop
+nothing to commit, working tree clean
+git:(develop) $
+----
+
+== 정리
+깃에서 다양한 역할을 수행하던 `checkout` 명령어가 보다 명확한 2개의 명령어로 분리되었다.
+
+* ``switch``: 브랜치 변경
+* ``restore``: 변경사항 복원
+
+[NOTE]
+====
+브랜치(Branch)를 가지로 쓸까말까 고민중...
+====
+
+== 참고
+* link:https://github.blog/2019-08-16-highlights-from-git-2-23/[Highlights from Git 2.23]
+* link:https://git-scm.com/download/linux[Download for Linux and Unix]
