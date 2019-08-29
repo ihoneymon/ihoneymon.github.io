@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 아스키독(Asciidoc) 기반으로 책쓰기 템플릿
-categories: tech
+category: tech
 tags: [asiidoc, asciidoctor, book]
 date: 2018-02-26 22:30:00
 ---

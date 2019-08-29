@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 스프링 부트 2.0.0.RELEASE
-categories: [tech,spring-boot]
+category: [tech,spring-boot]
 tags: [java,spring,springboot,release]
 date: 2018-03-01 23:00
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[spring-boot] BeanDefinitionOverrideException 발생시"
-categories: [spring-boot]
+category: [spring-boot]
 tags: [springboot, BeanDefinitionOverrideException]
 date: 2018-11-24 00:00
 ---

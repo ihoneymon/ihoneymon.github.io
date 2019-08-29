@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[java] jUnit5 적용기"
-categories: [tech]
+category: [tech]
 tags: [java,junit5]
 ---
 

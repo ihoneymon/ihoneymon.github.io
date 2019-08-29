@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "스프링 부트 사용 수준(등급)"
-categories: [tech,spring-boot]
+category: [tech,spring-boot]
 tags: [java,spring,springboot,grade]
 date: 2019-01-17 09:30
 ---
