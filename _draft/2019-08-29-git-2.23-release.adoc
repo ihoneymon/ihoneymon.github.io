@@ -161,7 +161,7 @@ git:(feature/git-switch)
 이 외에도 다양한 선택사항이 존재한다. ``git switch --help``로 확인가능하다.
 
 === `restore`: 작업중인 파일을 복원한다.
-+
+
 [source,shell]
 ----
 git:(develop) $ git status

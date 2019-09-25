@@ -2,7 +2,7 @@
 layout: post
 title: '[취미] 겨울산행에 대한 이야기'
 tags: [등산, 한라산, 겨울산, 산행]
-category: hobby
+category: [hobby]
 date: 2019-01-07 10:00
 ---
 
