@@ -12,7 +12,7 @@ date: 2019-10-23 08:00:00
 
 - Spring Boot 2.2.0.RELEASE: `MediaType.APPLICATION_JSON_UTF8` Deprecated
     - `Content-Type` 으로 전달되는 속성값은 1가지 성질만 가진다.
-    - `MediaType.APPLICATION_JSON_UTF8` 의 경우 `application/json; charset=UTF-8` 로 2개의 속성으 ㄹ가지고 있음
+    - `MediaType.APPLICATION_JSON_UTF8` 의 경우 `application/json; charset=UTF-8` 로 속성 2개를 가지고 있음
 - `Content-Type: application/json;charset=UTF-8` 요청에 대해 `Content-Type: application/json` 으로 응답
 - `StringHttpMessageConverter` 기본 Charset 은 `ISO_8859_1` 이다.
     - 한글깨짐 발생함
