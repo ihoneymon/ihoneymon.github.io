@@ -44,27 +44,27 @@ date: 2020-05-25
 - 트위터
     - [https://twitter.com/springboot](https://twitter.com/springboot)
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-01.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-01.png" | absolute_url }})
 
         스프링 부트 출시를 비롯한 스프링 부트 관련 소식을 가장 빠르게 접할 수 있다.
 
 - 페이스북
     - 한국스프링유저그룹(KSUG, [https://www.facebook.com/groups/springkorea](https://www.facebook.com/groups/springkorea))
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-02.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-02.png" | absolute_url }})
 
         스프링과 관련된 다양한 활동이 이뤄지고 있는 대표적인 커뮤니티로 부지런한 누군가가 공유해주는 이런 뉴스를 빠르게 접할 수 있다. 더불어서 궁금한 점을 물으면 누군가가 답해준다.
 
 - 지인
     - @[Outsideris](https://twitter.com/Outsideris)([https://twitter.com/](https://twitter.com/Outsideris)): 다양한 개발소식을 공유하는 인싸 **풀스택 개발자** 아웃사이더님
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-03.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-03.png" | absolute_url }})
 
         개발 및 일상의 다양한 소식을 엿볼 수 있다.
 
     - @ihoneymon([https://twitter.com/ihoneymon](https://twitter.com/ihoneymon)): #월급쟁이개발자
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-04.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-04.png" | absolute_url }})
 
         개발관련 소식은 #월급쟁이개발자 라는 태그와 함께 제공하고 있다. 
 
@@ -78,7 +78,7 @@ date: 2020-05-25
     - 새로운 지원기능
     - 의존성 라이브러리 업그레이드
 
-{{"/assets/post/2020-05-25/2020-05-25-img-05.png" | absolute_url }}
+![]({{"/assets/post/2020-05-25/2020-05-25-img-05.png" | absolute_url }})
 
 ## 스프링 부트 깃헙 위키
 
@@ -97,7 +97,7 @@ date: 2020-05-25
     - 의존성 라이브러리
     - 제거대상
 
-{{"/assets/post/2020-05-25/2020-05-25-img-06.png" | absolute_url }}
+![]({{"/assets/post/2020-05-25/2020-05-25-img-06.png" | absolute_url }})
 
 ## 스프링 부트 레퍼런스 문서
 
@@ -105,7 +105,7 @@ date: 2020-05-25
 
 - [https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)
 
-{{"/assets/post/2020-05-25/2020-05-25-img-07.png" | absolute_url }}
+![]({{"/assets/post/2020-05-25/2020-05-25-img-07.png" | absolute_url }})
 
 스프링 부트 사용에 앞서서 가볍게 레퍼런스 문서를 가볍게 읽어준 후, 스프링 부트 입문서를 읽으면 좀 더 빠르게 이해할 수 있다. 영어라서 어렵게 느껴진다면 크롬에서 해당페이지를 '한국어'로 번역해서 읽어봐도 좋다. 대략적인 내용을 파악할 수 있다.
 
@@ -131,9 +131,9 @@ date: 2020-05-25
     - 신규도입기능(Java 지원버전, 새로운 라이브러리 지원 구성 추가 등)
     - 예: `spring-boot-starter-validation`  추가:  `spring-boot-starter-web` 모듈에 포함되어 있던 `validation-api` 제외되어 `spring-boot-starter-validation` 별도모듈로 분리되었다.
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-08.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-08.png" | absolute_url }})
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-09.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-09.png" | absolute_url }})
 
 ## 스프링 부트 레퍼런스 문서
 
@@ -160,14 +160,14 @@ date: 2020-05-25
     - [https://github.com/spring-projects/spring-boot](https://github.com/spring-projects/spring-boot)
     - 태그가 잘 정리되어 있어 출시버전 별 코드를 확인할 수 있다.
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-10.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-10.png" | absolute_url }})
 
 - `master` 브랜치는 현재 배포되고 있는 코드와 일치한다.
     - 레퍼런스 문서는 `current` 와 일치한다.
     - [https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal)
     - 원하는 버전을 `current` 와 바꿔 입력하면 해당 레퍼런스 문서를 볼 수 있다.
 
-        {{"/assets/post/2020-05-25/2020-05-25-img-11.png" | absolute_url }}
+        ![]({{"/assets/post/2020-05-25/2020-05-25-img-11.png" | absolute_url }})
 
         - ex) [https://docs.spring.io/spring-boot/docs/**1.5.12.RELEASE**/reference/htmlsingle](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal)
         - ex) [https://docs.spring.io/spring-boot/docs/**2.0.0.RELEASE**/reference/htmlsingle](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#legal)
@@ -175,7 +175,7 @@ date: 2020-05-25
 - 마일스톤([https://github.com/spring-projects/spring-boot/milestones](https://github.com/spring-projects/spring-boot/milestones)) 확인
     - 앞으로 출시될 스프링 부트에 추가되거나 변경될 내용을 확인할 수 있다.
 
-    {{"/assets/post/2020-05-25/2020-05-25-img-12.png" | absolute_url }}
+    ![]({{"/assets/post/2020-05-25/2020-05-25-img-12.png" | absolute_url }})
 
 # 변경사항 적용
 
@@ -195,7 +195,7 @@ date: 2020-05-25
 
 예제: [https://github.com/ihoneymon/boot-spring-boot](https://github.com/ihoneymon/boot-spring-boot)
 
-{{"/assets/post/2020-05-25/2020-05-25-img-13.png" | absolute_url }}
+![]({{"/assets/post/2020-05-25/2020-05-25-img-13.png" | absolute_url }})
 
 # 맺으며
 
