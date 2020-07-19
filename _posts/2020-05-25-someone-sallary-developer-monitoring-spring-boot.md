@@ -1,5 +1,5 @@
 ---
-title: "[spring-boot] 어느 월급쟁이개발자의 스프링 부트 업데이트 대비방법"
+title: "[spring-boot] 어느 월급쟁이개발자의 스프링 부트 업데이트 따라잡기"
 layout: post
 category: [tech]
 tags: [tech, spring-boot, log]
