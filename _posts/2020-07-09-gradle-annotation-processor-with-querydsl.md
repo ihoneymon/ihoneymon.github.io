@@ -6,45 +6,58 @@ tags: [tech, gradle, annotation-processor, querydsl]
 date: 2020-07-09
 ---
 
-새로운 맥북을 받고 스프링 부트 버전업을 하면 그레이들도 버전업을 해야하는 상황이 온다. 
+# 바쁜 현대 개발자들을 위한 요약:
+
+- 인텔리제이 2019.X 사용시: **그레이들 플러그인 "com.ewerk.gradle.plugins.querydsl" 사용**
+- 인텔리제이 2020.X 사용지: **그레이들 `annotationProcessor` 사용**
+
+# 발단
 
 - 그레이들 4.X 에서 5.X, 최근에는 6.5 까지 출시되었다.
+- 스프링 2.3 부터 그레이들 6.3+ 이상을 요구한다. ←요놈이 문제다.
 
-나는 내가 관리하는 프로젝트에서 사용하는 라이브러리 버전업을 가급적이면 최신버전으로 유지하려고 한다. 이 과정에서 많은 시행착오를 겪는다(삽질...). 그 삽질을 정리해서 공유하는데, 이 글 도 그런 과정에서 나온 것 중 하나다.
+> 내 관리 프로젝트의 라이브러리는 가급적 최신버전을 유지하려고 한다. 이 과정에서 많은 시행착오를 겪는다(삽질...). 그 시행착오를 정리해서 공유하는데, 이 글도 그런 과정에서 나온 것 중 하나다.
 
-이 과정에서 기존에 Querydsl 로 생성한 Q클래스를 불러올 수 없다는 경고가 노출된다. Intellij IDEA 에서 build 를 Gradle 로 하면 큰 문제없이 넘어가지만 Intellij IDEA 로 선택하면 정상적으로 작동되지 않는다. build 를 Gradle 로 하면 그 속도가 너무 느린 탓에 짜증이 난다.
+이 글에서 다룰 예정인 Querydsl와 Annotation processor 에 관한 내용도, 스프링 부트를 버전업하는 과정에서 겪게 된다.
 
-이 문제를 조만간 해결해야지 하다가 약간의 여유가 생겨 해결방법을 찾아보기로 한다.
+사내 개발기기 교체주기가 되어 새로운 맥북을 받고 스프링 부트 버전업을 하려고 하면 그레이들도 버전업을 했다. 이 과정에서 인텔리제이에서 **Querydsl** 을 이용해서 생성한 **Q클래스**를 불러올 수 없다는 경고가 노출된다. 
+
+인텔리제이(2019.3) 에서 그레이들로 빌드하면 큰 문제없이 넘어가지만 'Intellij IDEA'를 선택하면 정상적으로 작동되지 않는다. 인텔리제이에서 프로젝트 빌드를 그레이들로 하면 돌아가기는 하는데 처리시간이 늘어져 짜증이 난다(새로 받은 16인치 맥북프로는 뭐만 했다하면 냉각팬이 거칠게 돌며 이륙준비를 시작한다).
+
+이 문제를 조만간 해결해야지 하다가 약간의 여유가 생겨 다양한 시도(와 검색)를 하며 해결한 내용을 정리한다.
 
 # 개요
 
-- Querydsl 이 생성한 Q클래스를 찾을 수 없을 때
 - [그레이들 4.6](https://docs.gradle.org/4.6/release-notes.html): "Convenient declaration of annotation processor dependencies"  추가됨
     - 롬복(Lombok) 등을 비롯한 애노테이션 기반 코드처리성능 향상목적
     - [https://blog.gradle.org/incremental-compiler-avoidance#about-annotation-processors](https://blog.gradle.org/incremental-compiler-avoidance#about-annotation-processors)
 - JPA 엔티티(`@Entity`)를 기반으로 작동하는 Querydsl 사용하는 경우
-    - 그레이들 플러그인 사용 [https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl](https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl)
+    - JPA를 사용하는 경우 검색쿼리 등을 손쉽게 사용할 수 있는 Querydsl 을 함께 사용하는 경우가 많음
+    - **그레이들 빌드스크립트**에서 **엔티티 클래스**를 **Q클래스**로 변경하기 위해 스크립트 작성하는게 번거로움
+    - 이런 번거로움을 해소하기 위해 그레이들 플러그인 사용 [https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl](https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl)
     - Querydsl 이 작동하기 위한 클래스를 생성하는 JPAAnnotationProcessor 작동 DSL 적용안됨
-- Gradle AnnotationProcessor 작동에 내맞기자.
+- 인텔리제이 2020.x 부터는 Gradle AnnotationProcessor 작동에 내맞기자.
 
 # 상세내역
 
-프로젝트 코드를 관리하다보면 자연스레 개발도구(IDE)와 빌드도구를 새로운 버전에 맞춰 업데이트를 진행하게 된다. 그런데 이 과정에서 꽤 골치를 썩게된다. 버전업이 되면서 과거에 있던 기능이 제외(Deprecated)되거나 변경되고 새로운 기능이 추가되고, 다른 기능으로 대체되는 등의 변동이 발생하기 때문이다. 그러면 한땀한땀 이전 버전과의 차이점을 비교하고 릴리즈 노트와 참고문서(Refernece document)를 찾아보고 생각보다 많은 시간을 허비하게 된다.
+프로젝트 코드를 관리하다보면 자연스레 **개발도구(IDE)**와 **빌드도구**를 새로운 버전에 맞춰 업데이트를 진행하게 된다. 그런데 이 과정에서 꽤 골치를 썩게된다. 버전업이 되면서 과거에 있던 기능이 제외(Deprecated)되거나 변경되고 새로운 기능이 추가되고, 다른 기능으로 대체되는 등의 변동이 발생하기 때문이다. 그러면 한땀한땀 이전 버전과의 차이점을 비교하고 릴리즈 노트와 참고문서(Refernece document)를 찾아보고 생각보다 많은 시간을 허비하게 된다.
 
 그레이들은 프로젝트의 의존성을 관리하고 작성된 코드를 배포가능한 형태로 가공하는 개발도구다. 그리고 그 버전이 매우 빠른 속도로 업데이트 된다. 그리고 기능의 변동도 많다. 그 탓에 기존에 작성한 스크립트가 쓸모가 없어지거나 동작하지 않는 등의 상황이 발생한다. 그레이들 플러그인(gradle plugin, [https://plugins.gradle.org/](https://plugins.gradle.org/)) 을 사용하다보면 그런 상황을 많이 마주하게 된다.
 
-그 중에 하나가 JPA 엔티티 클래스(`javax.persistence.Entity` 선언클래스)를  가공하여 Querydsl 클래스로 만드는 Queyrdsl JPA([https://github.com/querydsl/querydsl](https://github.com/querydsl/querydsl), [http://www.querydsl.com/static/querydsl/latest/reference/html/ch02.html#jpa_integration](http://www.querydsl.com/static/querydsl/latest/reference/html/ch02.html#jpa_integration))는 꽤 많은 시간을 허비하게 한다.
+그 중에 JPA 엔티티 클래스(`javax.persistence.Entity` 선언클래스)를  가공하여 Query와 유사한 작성법으로 사용할 수 있는 Q클래스를 생성하는  Queyrdsl JPA([https://github.com/querydsl/querydsl](https://github.com/querydsl/querydsl), [http://www.querydsl.com/static/querydsl/latest/reference/html/ch02.html#jpa_integration](http://www.querydsl.com/static/querydsl/latest/reference/html/ch02.html#jpa_integration)) 플러그인이 대표적인 경우다. 
 
-Querydsl JPA 는 지정된 경로에서 `@Entity` 애노테이션이 선언되어 있는 클래스를 찾아서 `JPAAnnotationProcessor` 를 이용하여 Querydsl 클래스를 생성한다. 이렇게 생성된 Querydsl 클래스는 자바 언어가 가지는 정적코드의 장점을 활용하여 안전한 쿼리문을 작성할 수 있도록 한다. 이 `JPAAnnotationProcessor` 의 작동을 정의하는 스크립트를 정의하는 것이 꽤 까다로롭다.
+Querydsl JPA 는 프로젝트 내에서 `@Entity` 애노테이션을 선언한 클래스를 탐색하고 `JPAAnnotationProcessor` 를 이용하여 **Q클래스**를 생성한다. 이렇게 생성된 **Q클래스**는 자바 언어가 가지는 정적코드의 장점을 활용하여 안전한 쿼리문을 작성할 수 있다(그래서 애용된다). Annotation processor 가 등장하기 이전 그레이들 버전(4.6 이전)에서는 `JPAAnnotationProcessor` 의 작동을 정의하는 스크립트를 정의하는 것이 쉽지 않았다(그레이들 문서에서 제대로 설명이 안되어 있어 이를 정의하기 어려웠다).
 
 그레이들에서 Querydsl 을 사용하기 위한 설정방법은 크게 2가지가 있다.
 
 - 그레이들 플러그인 "com.ewerk.gradle.plugins.querydsl"  설정
-- Annotation Processor 설정
-
-Querydsl 을 지원하는 많은 그레이들 플러그인 중에서 널리 쓰이는 것이 "com.ewerk.gradle.plugins.querydsl" 플러그인([https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl](https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl))이다. 
+- 그레이들 Annotation Processor 설정
 
 ## 그레이들 플러그인 "com.ewerk.gradle.plugins.querydsl"  설정
+
+Querydsl 을 지원하기 위해 나왔던  많은 그레이들 플러그인 중에서 널리 쓰이는 것이 "com.ewerk.gradle.plugins.querydsl" 플러그인([https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl](https://plugins.gradle.org/plugin/com.ewerk.gradle.plugins.querydsl))이다. 
+
+대략 다음과 같은 형태로 구현하면 큰 문제없이 사용가능하다. 이
 
 ```groovy
 apply plugin: "com.ewerk.gradle.plugins.querydsl"
@@ -73,9 +86,9 @@ configurations { // 손권남님이 공유해주신 팁
 }
 ```
 
-이 그레이들 플러그인은 2018.7 에 출시된  `1.0.10` 를 마지막으로 더이상 업데이트가 이뤄지고 있지 않다. 그레이들 4.6 에서 Annotation Processor 가 소개되었고, 이를 반영한 그레이들 5.X 붜는 정상적으로 작동하지 않았다. 그래서 위 스크립트 부분 중 다음 부분이 추가되었다.
+이 그레이들 플러그인은 2018.7 에 출시된  `1.0.10` 를 마지막으로 더이상 업데이트가 이뤄지고 있지 않다. 그레이들 4.6 에서 Annotation Processor 가 소개되었고, 이를 반영한 그레이들 5.X 가 출시됐을 때는  정상적으로 작동하지 않았다. 그래서 위 스크립트 부분 중 다음 부분이 추가되었다.
 
-```groovy
+```jsx
 compileQuerydsl {
     options.annotationProcessorPath = configurations.querydsl
 }
@@ -83,7 +96,7 @@ compileQuerydsl {
 
 querydsl-apt 에 있는 AnnotationProcessor 의 경로를 설정해준다. 그리고 그레이들 6.x 에서는 다음 코드를 추가해주면 정상작동한다고 한다.
 
-```groovy
+```jsx
 configurations { // 손권남님이 공유해주신 팁 
     // 아래를 지정하지 않으면, compile 로 걸린 JPA 의존성에 접근하지 못한다.
     querydsl.extendsFrom compileClasspath
@@ -96,12 +109,12 @@ configurations { // 손권남님이 공유해주신 팁
 
 그레이들 4.6([https://docs.gradle.org/4.6/release-notes.html](https://docs.gradle.org/4.6/release-notes.html)) 에서 소개된 Annotation processor 는 애노테이션이 선언된 클래스처리를 별도의 프로세서에서 처리하여 성능향상을 꽤했다. 
 
-```groovy
+```jsx
 compile("org.projectlombok:lombok")
 annotationProcessor("org.projectlombok:lombok")
 ```
 
-### 과거형
+### 과거형(그레이들 4.6 이전)
 
 ```groovy
 /** QueryDSL Class Generate Script */
@@ -156,25 +169,43 @@ configure(querydslProjects) {
         annotationProcessor("jakarta.annotation:jakarta.annotation-api") // java.lang.NoClassDefFoundError (javax.annotation.Generated) 발생 대응 
     }
 
-    
+    // clean 태스크와 cleanGeneatedDir 태스크 중 취향에 따라서 선택하세요.
+	/** clean 태스크 실행시 QClass 삭제 */
+    clean {
+        delete file('src/main/generated') // 인텔리제이 Annotation processor 생성물 생성위치
+    }
+
+	/**
+     * 인텔리제이 Annotation processor 에 생성되는 'src/main/generated' 디렉터리 삭제
+     */
+    task cleanGeneatedDir(type: Delete) { // 인텔리제이 annotation processor 가 생성한 Q클래스가 clean 태스크로 삭제되는 게 불편하다면 둘 중에 하나를 선택 
+        delete file('src/main/generated')
+    }
 }
 ```
 
-변경된 그레이들 Annotation processor 를 사용하면 별다른 설정을 하지 않아도 그레이들 자체에서 `annotationProcessor` 선언되어있는 라이브러리를 이용하여 적절한 AnnotationProcessor 를 선택하여 사용한다. lombok 도 이와 유사하게 사용가능한 것을 확인할 수 있다.
+변경된 그레이들 Annotation processor 를 사용하면 별다른 설정을 하지 않아도 그레이들 자체에서 `annotationProcessor` 으로 선언한 라이브러리의 적절한 AnnotationProcessor 를 선택하여 사용한다. lombok 도 이와 유사하게 사용가능한 것을 확인할 수 있다.
 
-사내에 위 내용을 정리하고 공유했을 때 몇 번의 피드백을 받아 정리되었다.
+> 사내에 위 내용을 정리하고 공유했을 때 몇 번의 피드백을 받아 정리되었다.
 
-변경된 Gradle annotation processor 설정으로 작성하면 굉장히 깔끔해진다. 그리고 그레이들 5.x 부터 6.x 까지 큰 문제없이 동작한다.
+"변경된 Gradle annotation processor 설정"으로 작성하면 굉장히 깔끔해진다. 그리고 그레이들 5.x 부터 6.x 까지 큰 문제없이 동작한다(인텔리제이 2020.X 기준).
 
-Intellij IDEA 에서 어떤 빌드방식(Gradle or Intellij IDEA)을 선택하는지에 따라서 Querydsl Annotation processor 처리 생성물이 생성되는 위치도 변동이 생긴다.
+Intellij IDEA 에서 빌드방식(Gradle or Intellij IDEA) 선택에 따라서 Querydsl Annotation processor  생성물이 생성되는 위치가 변동된다.
 
 ## Intellij IDEA build 설정
 
 **Intellij IDEA - Build, Execution, Deployment - Build tools → Gradle** 에서 'Build and run' 설정값에 따라 Annotation processor 생성물 위치가 달라짐
 
+![]({{"/assets/post/2020-07-09/2020-07-09-img-01.png" | absolute_url }})
+
 - Gradle: 각 모듈별 `build/generated/sources/annotationProcessor/java/main`
+    - Q생성물에 대한 별도의 정리작업을 하지 않아도 clean 태스크로 정리 가능
+    ![]({{"/assets/post/2020-07-09/2020-07-09-img-02.png" | absolute_url }})
 - IntellijI IDEA: 각 모듈별 `src/main/generated`
     - Compiler Annotation procesoors 설정영향받음
+    - 기존 Q클래스는 갱신되지만, 엔티티 위치가 변경되거나 삭제된 경우 Q클래스는 그대로 유지된다.
+    - `src/main/generated` 폴더에 생성된 생성물 처리태스크를 작성해야 한다.
+    ![]({{"/assets/post/2020-07-09/2020-07-09-img-02.png" | absolute_url }})
 
 # 정리
 
