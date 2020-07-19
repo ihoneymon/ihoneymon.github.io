@@ -6,7 +6,7 @@ tags: [tech, lombok, annotation]
 date: 2020-07-18
 ---
 
-* 부제: 스프링 `@Qualifier` 가 안먹힐 때
+* 부제: 생성자에 선언한 `@Qualifier` 가 안먹힐 때(with 롬복)
 
 스프링에서 사용할 수 있는 스프링 빈 주입방식은 크게 3가지가 있다.
 
