@@ -14,17 +14,8 @@ facebook_username: "kim.jiheon"
 
 # Build settings
 markdown: kramdown
-asciidoc:
-  processor: asciidoctor
-  ext: asciidoc, adoc, asc
-  page_attribute_prefix: jekyll
-  require_front_matter_header: true
-  attributes:
-    - source-highlighter=pygments
-    - pygments-css=style
 paginate: 5
 paginate_path: "/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-asciidoc

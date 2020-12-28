@@ -1,7 +1,7 @@
 ---
 title: "[B-C-D] 001. 개발자 인생은 빌드와 배포사이 코딩이다."
 layout: post
-category: [tech]
+category: 'tech'
 tags: [tech, spring, springboot,log]
 date: 2019-05-03 09:00:00
 ---
