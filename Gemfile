@@ -9,7 +9,7 @@ gem 'pygments.rb'
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.6"
   gem "jekyll-paginate", "~> 1.1.0"
-  gem "jekyll-asciidoc"
+  gem "jekyll-seo-tag", "~> 2.6"
 end
 
 require 'rbconfig'

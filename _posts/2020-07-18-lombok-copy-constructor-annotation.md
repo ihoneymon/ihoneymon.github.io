@@ -18,7 +18,7 @@ date: 2020-07-18
 
 > 스프링 환경에서 생성자 주입이 작동되려면 클래스에는 생성자가 하나만 선언되어 있어야 한다.
 
-```jsx
+```java
 @Slf4j
 @Service
 public class BootService {
@@ -33,6 +33,7 @@ public class BootService {
     public void init() {
         log.debug("Injected properties: {}", this.properties);
     }
+}
 ```
 
 > 해당 클래스를 테스트할 때 테스트용 스프링 애플리케이션컨텍스트를 구동하지 않고 원하는 코드로 바꿔치기도 가능하다.
@@ -40,6 +41,7 @@ public class BootService {
 자바 개발환경에서는 반복적으로 작성하게 되는 접근자/설정자(Getter(`get`)/Setter(`set`)), `toString()` 과 `equals()` 등을 애노테이션으로 대체할 수 있는 롬복(lombok, [https://projectlombok.org/](https://projectlombok.org/)) 이 널리 사용된다(개발자에 따라서 호불호가 갈린다. 애노테이션 사용이 남발되고 있다고…​).
 
 가끔 동일한 타입의 스프링 빈을 다른 이름으로 사용해야 하는 상황이 생긴다. 그럴 때면 다음과 같이 스프링 빈의 이름을 각각 다르게 선언하여 사용하기도 한다. 아래코드는 서로다른 데이터베이스 설정으로 구성된 `DataSource` 를 `primaryDataSource` 와 `secondaryDataSource` 라는 이름으로 가지는 스프링 빈을 선언하고 있다.
+
 
 ```java
 import lombok.Getter;

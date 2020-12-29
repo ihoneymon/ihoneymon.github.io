@@ -6,6 +6,7 @@ baseurl: ""
 url: "http://honeymon.io"
 timezone: "Asia/Seoul"
 encoding: "UTF-8"
+highlighter: rouge
 
 # Social Profiles
 twitter_username: ihoneymon
@@ -14,8 +15,22 @@ facebook_username: "kim.jiheon"
 
 # Build settings
 markdown: kramdown
+
+#kramdown
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    default_lang: csharp
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+
+# paginate
 paginate: 5
 paginate_path: "/posts/page:num/"
 plugins:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-seo-tag
