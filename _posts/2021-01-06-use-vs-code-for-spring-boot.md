@@ -196,19 +196,19 @@ VSCode 는 우리가 사용했던 IDE(Eclipse, IntelliJ)와는 다르게 Java �
 
 ## 실행
 
-메인클래스(`@SpringBootTest` 와 메인메서드(`public static void main(String[] args)`) 선언)를 선택하여 우클릭 후 Run 을 실행하거나 소스코드를 열면 Code lens([https://code.visualstudio.com/blogs/2017/02/12/code-lens-roundup](https://code.visualstudio.com/blogs/2017/02/12/code-lens-roundup)) 기능이 활성화 되어 메인메서드 위에 `Run | Debug` 아 노출된다.
+메인클래스(`@SpringBootTest` 와 메인메서드(`public static void main(String[] args)`) 선언)를 선택하여 우클릭 후 Run 을 실행하거나 소스코드를 열면 Code lens([https://code.visualstudio.com/blogs/2017/02/12/code-lens-roundup](https://code.visualstudio.com/blogs/2017/02/12/code-lens-roundup)) 기능이 활성화 되어 메인메서드 위에 `Run | Debug` 가 노출된다.
 
-    ![]({{"/assets/post/2021-01-06/2021-01-06-015.png" | absolute_url }})
+![]({{"/assets/post/2021-01-06/2021-01-06-015.png" | absolute_url }})
 
 실행하면 작은 팝업메뉴가 출력된다.
 
-    ![]({{"/assets/post/2021-01-06/2021-01-06-016.png" | absolute_url }})
+![]({{"/assets/post/2021-01-06/2021-01-06-016.png" | absolute_url }})
 
 아직까지는 Code lens 를 이용해서 실행한 것과 SPRING BOOT DASHBOARD 에서 실행한 것 사이에 동기화는 지원하지 않는 것으로 보인다.
 
 SPRING BOOT DASHBOARD 를 이용해서 실행하면 브라우저로 열거나 중단하는 것이 가능하다.
 
-    ![]({{"/assets/post/2021-01-06/2021-01-06-017.png" | absolute_url }})
+![]({{"/assets/post/2021-01-06/2021-01-06-017.png" | absolute_url }})
 
 # 정리
 
