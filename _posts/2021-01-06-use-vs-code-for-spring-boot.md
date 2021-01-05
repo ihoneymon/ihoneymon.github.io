@@ -35,9 +35,9 @@ date: 2021-01-06
 
 JDK  설치와 관련해는 많은 포스팅이 있기 때문에 크게 설명하지 않고 윈도우즈를 기준으로 JDK를 설치하고 설정하는 내용을 정리한 자료를 공유한다.
 
-[0th 윈도우즈 환경에서 자바(스프링 부트) 개발환경 구축하기](https://docs.google.com/presentation/d/e/2PACX-1vRMGtGU2IUkeLa0MRTrLmmnPoYf4ceg-QKRdMvPJ1usASMt8Xa22FeE9kZ36KkE8rn0GzEvWAInZUtV/pub?start=false&loop=false&delayms=3000)
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRMGtGU2IUkeLa0MRTrLmmnPoYf4ceg-QKRdMvPJ1usASMt8Xa22FeE9kZ36KkE8rn0GzEvWAInZUtV/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="749" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
-리눅나 맥OS 의 경우에는 패키지 관리자와 지원도구를 이용해서 손쉽게 사용할 수 있다. 보다 자세하게 설명하는 포스팅이 있어 공유하고 넘어간다.
+리눅스나 맥OS 의 경우에는 패키지 관리자와 지원도구를 이용해서 손쉽게 사용할 수 있다. 보다 자세하게 설명하는 포스팅이 있어 공유하고 넘어간다.
 
 - 여러 개의 JDK를 설치하고 선택해서 사용하기([https://blog.benelog.net/installing-jdk.html](https://blog.benelog.net/installing-jdk.html))
 

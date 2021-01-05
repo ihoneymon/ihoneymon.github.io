@@ -24,11 +24,11 @@ h6 {
 }
 
 a {
-  color: $gray-900;
+  color: $primary;
   @include transition-all;
   &:focus,
   &:hover {
-    color: $primary;
+    color: $green;
   }
 }
 
