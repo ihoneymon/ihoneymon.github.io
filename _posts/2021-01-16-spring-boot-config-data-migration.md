@@ -388,4 +388,4 @@ class AppPropertiesFilterTest {
 - [https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.4-Release-Notes](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.4-Release-Notes)
 - [https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-Config-Data-Migration-Guide](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-Config-Data-Migration-Guide)
 - [https://spring.io/blog/2020/08/14/config-file-processing-in-spring-boot-2-4](https://spring.io/blog/2020/08/14/config-file-processing-in-spring-boot-2-4)
-- [https://github.com/kwon37xi/research-spring-boot-2.4/tree/master/profile-group?fbclid=IwAR27segJmkpFUo_io80gGo_DJO2pJXQm_h9EtNlv4rLAg-S2vH56f1I7Q84](https://github.com/kwon37xi/research-spring-boot-2.4/tree/master/profile-group?fbclid=IwAR27segJmkpFUo_io80gGo_DJO2pJXQm_h9EtNlv4rLAg-S2vH56f1I7Q84)
+- [https://github.com/kwon37xi/research-spring-boot-2.4/tree/master/profile-group](https://github.com/kwon37xi/research-spring-boot-2.4/tree/master/profile-group)
