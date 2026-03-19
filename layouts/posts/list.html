@@ -1,0 +1,50 @@
+{{ define "main" }}
+<header class="masthead" style="background-image: url('/img/bg-post.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Posts</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+
+      {{ range .Paginator.Pages }}
+      <article class="post-preview">
+        <a href="{{ .RelPermalink }}">
+          <h2 class="post-title">{{ .Title }}</h2>
+          {{ if .Params.subtitle }}
+          <h3 class="post-subtitle">{{ .Params.subtitle }}</h3>
+          {{ else }}
+          <h3 class="post-subtitle">{{ .Summary | plainify | truncate 100 }}</h3>
+          {{ end }}
+        </a>
+        <p class="post-meta">Posted by
+          {{ with .Params.author }}{{ . }}{{ else }}{{ $.Site.Params.author }}{{ end }}
+          on {{ .Date.Format "January 02, 2006" }}</p>
+      </article>
+      <hr>
+      {{ end }}
+
+      {{ if gt .Paginator.TotalPages 1 }}
+      <div class="clearfix">
+        {{ if .Paginator.HasPrev }}
+        <a class="btn btn-primary float-left" href="{{ .Paginator.Prev.URL }}">&larr; Newer<span class="d-none d-md-inline"> Posts</span></a>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+        <a class="btn btn-primary float-right" href="{{ .Paginator.Next.URL }}">Older<span class="d-none d-md-inline"> Posts</span> &rarr;</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+    </div>
+  </div>
+</div>
+{{ end }}

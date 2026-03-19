@@ -1,0 +1,37 @@
+{{ define "main" }}
+<header class="masthead" style="background-image: url('/img/bg-post.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          <h1>Tags</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div id="archives">
+        {{ range .Data.Terms.Alphabetical }}
+        <div class="archive-group">
+          <h3 class="tag-head"><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></h3>
+          <ul>
+            {{ range .Pages }}
+            <li>
+              <article class="archive-item">
+                <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+              </article>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

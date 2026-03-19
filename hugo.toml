@@ -1,0 +1,33 @@
+baseURL = "http://honeymon.io/"
+languageCode = "ko-KR"
+title = "I'm honeymon(JiHeon Kim)."
+hasCJKLanguage = true
+enableRobotsTXT = true
+summaryLength = 30
+
+[pagination]
+  pagerSize = 5
+  path = "page"
+
+[params]
+  description = "허니몬(honeymon.io)의 블로그 입니다."
+  author = "honeymon"
+  email = "ihoneymon@gmail.com"
+  twitterUsername = "ihoneymon"
+  githubUsername = "ihoneymon"
+  facebookUsername = "kim.jiheon"
+  googleAnalyticsID = "UA-67996697-1"
+  defaultBackground = "/img/bg-post.jpg"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[markup]
+  [markup.highlight]
+    noClasses = true
+    style = "monokai"
+    lineNos = false
+    codeFences = true
+  [markup.goldmark.renderer]
+    unsafe = true

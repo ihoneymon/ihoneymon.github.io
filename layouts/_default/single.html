@@ -1,0 +1,52 @@
+{{ define "main" }}
+{{ $bg := .Params.background | default "/img/bg-post.jpg" }}
+<header class="masthead" style="background-image: url('{{ $bg }}')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+        <div class="post-heading">
+          <h1>{{ .Title }}</h1>
+          {{ with .Params.subtitle }}
+          <h2 class="subheading">{{ . }}</h2>
+          {{ end }}
+          <span class="meta">Posted by
+            <a href="#">{{ with .Params.author }}{{ . }}{{ else }}{{ $.Site.Params.author }}{{ end }}</a>
+            on {{ .Date.Format "January 02, 2006" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 mx-auto">
+
+      {{ .Content }}
+
+      <hr/>
+
+      <h3>Comments</h3>
+      <script src="https://utteranc.es/client.js"
+              repo="ihoneymon/blog-comments"
+              branch="master"
+              issue-term="{{ .RelPermalink }}"
+              async>
+      </script>
+
+      <hr/>
+
+      <div class="clearfix">
+        {{ with .PrevInSection }}
+        <a class="btn btn-primary float-left" href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">&larr; Previous<span class="d-none d-md-inline"> Post</span></a>
+        {{ end }}
+        {{ with .NextInSection }}
+        <a class="btn btn-primary float-right" href="{{ .RelPermalink }}" data-toggle="tooltip" data-placement="top" title="{{ .Title }}">Next<span class="d-none d-md-inline"> Post</span> &rarr;</a>
+        {{ end }}
+      </div>
+
+    </div>
+  </div>
+</div>
+{{ end }}
