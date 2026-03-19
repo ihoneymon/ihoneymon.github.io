@@ -25,12 +25,14 @@ tags: [hugo, jekyll, blog, migration, ai, claude]
 
 ## 이관 작업 개요
 
-전체 작업은 크게 네 단계로 진행됐다.
+전체 작업은 크게 여섯 단계로 진행됐다.
 
 1. Hugo 설정 파일(`hugo.toml`) 작성
 2. 레이아웃 템플릿 이식
 3. 포스트 마이그레이션 스크립트 작성 및 실행
 4. 빌드 오류 수정 + GitHub Actions 배포 설정
+5. 배포 후 트러블슈팅 (Jekyll 잔재 충돌 수정)
+6. Jekyll 파일 전체 정리
 
 ---
 
@@ -237,6 +239,75 @@ jobs:
 
 ---
 
+## 5단계: 배포 후 트러블슈팅
+
+푸시하고 나서 `honeymon.io` 에 접속했더니 이런 화면이 떴다.
+
+```
+--- layout: home background: '/img/bg-index.jpg' ---
+```
+
+홈페이지 대신 front matter 텍스트가 그대로 출력되는 황당한 상황. 원인은 프로젝트 루트에 남아있던 Jekyll 용 `index.html` 이었다.
+
+```html
+---
+layout: home
+background: '/img/bg-index.jpg'
+---
+```
+
+Hugo 는 이 파일을 홈페이지 콘텐츠로 읽어서 렌더링하려 했는데, `layout: home` 이라는 레이아웃이 Hugo 에 존재하지 않으니 front matter 텍스트를 그대로 뿌려버린 것이다. `git rm index.html` 하고 재푸시하니 정상으로 돌아왔다.
+
+### GitHub Pages 소스 설정 문제
+
+`index.html` 을 지웠는데도 이번엔 `404 File not found` 가 떴다. GitHub Actions 로그를 보니 두 개의 워크플로우가 동시에 실행되고 있었다.
+
+- `Deploy Hugo to GitHub Pages` — Hugo 빌드 후 배포
+- `pages-build-deployment` — GitHub 이 자동으로 돌리는 Jekyll 빌드
+
+Jekyll 빌드가 Hugo 배포 결과를 **덮어쓰고 있었던 것**이다. 원인은 GitHub Pages 소스 설정이 `legacy`(브랜치에서 Jekyll 자동 빌드) 로 되어 있었기 때문이다.
+
+```bash
+# 현재 설정 확인
+gh api repos/ihoneymon/ihoneymon.github.io/pages --jq '.build_type'
+# → legacy
+
+# GitHub Actions 방식으로 변경
+gh api --method PUT repos/ihoneymon/ihoneymon.github.io/pages \
+  -f build_type=workflow
+```
+
+또는 GitHub 웹에서 `Settings → Pages → Source → GitHub Actions` 로 변경해도 된다.
+
+변경 후 워크플로우를 수동으로 다시 실행하니 정상 배포됐다.
+
+---
+
+## 6단계: Jekyll 파일 전체 정리
+
+배포가 안정된 김에 Jekyll 잔재를 완전히 제거했다.
+
+삭제한 것들:
+
+| 디렉터리/파일 | 용도 |
+|---|---|
+| `_posts/` | Jekyll 포스트 원본 (이미 `content/posts/` 로 이관 완료) |
+| `_layouts/`, `_includes/` | Jekyll Liquid 템플릿 |
+| `_sass/` | Jekyll 스타일시트 |
+| `_draft/` | 미완성 초안 |
+| `assets/` | Jekyll 정적 파일 (이미 `static/` 으로 복사 완료) |
+| `_config.yml` | Jekyll 설정 |
+| `Gemfile` | Ruby 의존성 |
+| `jekyll-theme-clean-blog.gemspec` | Jekyll 테마 |
+| `gulpfile.js`, `package.json` | 구버전 빌드 스크립트 |
+| `build.sh`, `serve.sh` | Jekyll 실행 스크립트 |
+| `about.html`, `tags.html` | Jekyll 페이지 |
+| `migrate_posts.py` | 마이그레이션 완료로 역할 끝 |
+
+210개 파일, 50,579줄 삭제. 레포지터리가 한결 가벼워졌다.
+
+---
+
 ## 결과
 
 | | Jekyll | Hugo |
@@ -244,13 +315,16 @@ jobs:
 | 빌드 시간 | ~수 초 | **91ms** |
 | 환경 셋업 | Ruby + Bundler | `brew install hugo` |
 | 포스트 수 | 33개 | 33개 (전부 이관) |
-| 생성 페이지 | - | 180개 (taxonomy 포함) |
+| 생성 페이지 | - | 191개 (taxonomy 포함) |
+| 잔여 파일 | 수백 개 | **Hugo 필수 파일만** |
 
 ---
 
 ## 소감
 
-솔직히 말하면 내가 직접 한 건 거의 없다. Claude Code 에게 "Jekyll 에서 Hugo 로 옮기고 싶은데 도와줘" 라고 시작해서, 오류가 날 때마다 에러 메시지를 보여주면 알아서 고쳐줬다. 마이그레이션 스크립트, 레이아웃 템플릿, 날짜 형식 일괄 수정, GitHub Actions 워크플로우까지.
+솔직히 말하면 내가 직접 한 건 거의 없다. Claude Code 에게 "Jekyll 에서 Hugo 로 옮기고 싶은데 도와줘" 라고 시작해서, 오류가 날 때마다 에러 메시지를 보여주면 알아서 고쳐줬다. 마이그레이션 스크립트, 레이아웃 템플릿, 날짜 형식 일괄 수정, GitHub Actions 워크플로우, 트러블슈팅까지 전부.
+
+삽질은 있었다. Jekyll `index.html` 충돌, GitHub Pages 소스 설정 문제 — 혼자였다면 원인 찾는 데만 한참 걸렸을 것들이다. 그런데 Claude 는 `gh api` 로 설정값을 확인하고 `PUT` 으로 바로 고쳐버렸다.
 
 "손 안 대고 코풀기" 라는 말이 딱 맞는다. AI 가 삽질을 대신 해주는 시대다.
 
