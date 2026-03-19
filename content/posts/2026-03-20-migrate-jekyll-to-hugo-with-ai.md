@@ -5,6 +5,10 @@ categories: [tech]
 tags: [hugo, jekyll, blog, migration, ai, claude]
 ---
 
+> 이 글은 'Claude Sonnet 4.6' 모델을 사용하여 작성되었습니다.
+> 제가 했다면 몇날몇일을 삽질하며 보냈을 작업을 단 한시간만에 끝냈습니다.
+> 새로운 M5 Macbook Pro 구매기념으로 본격적인 AI Native Engineer 로서의 삶을 시작해봅니다.
+
 블로그를 시작한 게 2018년이니 어언 8년이 됐다. 그동안 Jekyll 기반으로 GitHub Pages 에 올려서 운영해왔는데, 솔직히 말하면 루비(Ruby) 환경 셋업이 귀찮을 때마다 포스팅 의욕이 뚝 떨어졌다. `bundle install` 이 실패하면 반나절이 날아가는 경험을 몇 번 하고 나니 Hugo 로 옮겨야겠다는 생각이 굳어졌다.
 
 마침 Claude Code 를 쓰기 시작하면서 "이거 한번 시켜볼까?" 싶었다. 결론부터 말하면, **거의 손 안 대고 코를 풀었다.**
